@@ -7,13 +7,13 @@ import compression from 'compression';
 import cookieSession from 'cookie-session';
 import 'express-async-errors';
 import HTTP_STATUS from 'http-status-codes';
-import { config } from './config';
 import { Server } from 'socket.io';
 import Logger from 'bunyan';
 import { createClient } from 'redis';
 import { createAdapter } from '@socket.io/redis-adapter';
 import applicationRoutes from '@root/routes';
-import { CustomError, IErrorResponse } from '@root/shared/globals/helpers/error-handler';
+import { config } from '@root/config';
+import { CustomError, IErrorResponse } from '@global/helpers/error-handler';
 
 const SERVER_PORT = process.env.PORT || 5000;
 const log: Logger = config.createLogger('setupServer');
