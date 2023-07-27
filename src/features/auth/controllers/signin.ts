@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import JWT from 'jsonwebtoken';
 import HTTP_STATUS from 'http-status-codes';
-
 // Path
 import { config } from '@root/config';
 import { joiValidation } from '@global/decorators/joi-validation.decorators';
@@ -38,6 +37,22 @@ export class SignInController {
       config.JWT_TOKEN!
     );
     req.session = { jwt: userJwt };
+
+    // Send email Test
+    // const templateParams: IResetPasswordParams = {
+    //   username: existingUser.username!,
+    //   email: existingUser.email,
+    //   ipaddress: publicIp.address(),
+    //   date: moment().format('MMMM Do YYYY, h:mm:ss a')
+    // };
+
+    // const template: string = resetPasswordTemplate.passwordResetConfirmationTemplate(templateParams);
+    // emailQueue.addEmailJob('forgotPasswordEmail', {
+    //   template,
+    //   receiverEmail: existingUser.email,
+    //   subject: 'Password Reset Confirmation'
+    // });
+
     const userDocument: IUserDocument = {
       ...user,
       authId: existingUser!._id,

@@ -51,7 +51,7 @@ export abstract class BaseQueue {
     });
   }
 
-  protected async addJob(jobName: string, data: any) {
+  protected async addJob(jobName: string, data: unknown) {
     this.queue.add(jobName, data, {
       attempts: 3,
       backoff: {
